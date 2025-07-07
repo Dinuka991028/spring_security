@@ -27,7 +27,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","index","/css/*","/js/*")
+                .antMatchers("/", "index", "/css/*", "/js/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -45,8 +45,15 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("STUDENT")
                 .build();
 
+        UserDetails dinuka = User.builder()
+                .username("dinuka")
+                .password(passwordEncoder.encode("password123"))
+                .roles("ADMIN")
+                .build();
+
         return new InMemoryUserDetailsManager(
-                rashmi
+                rashmi,
+                dinuka
         );
     }
 }
