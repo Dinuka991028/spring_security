@@ -39,21 +39,21 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        UserDetails rashmi = User.builder()
-                .username("Rashmi")
+        UserDetails annaSmith = User.builder()
+                .username("annasmith")
                 .password(passwordEncoder.encode("password"))
                 .roles("STUDENT")
                 .build();
 
-        UserDetails dinuka = User.builder()
-                .username("dinuka")
+        UserDetails linda = User.builder()
+                .username("linda")
                 .password(passwordEncoder.encode("password123"))
                 .roles("ADMIN")
                 .build();
 
         return new InMemoryUserDetailsManager(
-                rashmi,
-                dinuka
+                annaSmith,
+                linda
         );
     }
 }
